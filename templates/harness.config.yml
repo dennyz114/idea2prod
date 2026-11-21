@@ -1,0 +1,43 @@
+# Configuración del proyecto para el harness idea2prod.
+# Es lo único que cambia entre proyectos. Rellénalo después de instalar.
+
+project: mi-proyecto
+
+github:
+  repo: owner/nombre          # para gh y los tickets
+  board: ""                   # nombre o número del GitHub Project (opcional)
+  labels:
+    - needs grooming
+    - needs ui mock
+    - security
+    - critical
+
+# Comandos que los agentes deben ejecutar tal cual. Déjalos vacíos si no aplican.
+commands:
+  setup: ""
+  lint: ""
+  test: ""
+  build: ""
+  e2e: ""
+
+paths:
+  plans: plans                # privado, en .gitignore
+  adr: docs/adr
+  mocks: mocks
+  seeds: seeds
+
+limits:
+  review_rounds: 2            # ciclos review → corrección antes de escalar al humano
+  ci_fix_attempts: 2
+
+review:
+  other_family: true          # el reviewer usa otro proveedor que el builder
+  second_reviewer_for: [critical]   # fases que reciben una segunda review
+
+# Base de datos efímera por ticket (scripts db-*.sh, pendientes).
+db:
+  engine: none                # postgres | sqlite | none
+  name_prefix: harness_       # los scripts se niegan a tocar DBs sin este prefijo
+  host_allowlist: [localhost, 127.0.0.1]
+  migrate_cmd: ""
+  seed_cmd: ""

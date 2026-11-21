@@ -1,0 +1,28 @@
+# Qué modelo hace cada tipo de fase. Valores de ejemplo: cámbialos a gusto.
+# Cada fase del plan lleva una etiqueta; el agente que la ejecuta usa esta fila.
+# Regla fija: la fila `review` debe ser de otra familia que quien construyó.
+
+mechanical:
+  provider: claude
+  model: sonnet
+  effort: high
+
+judgment:
+  provider: claude
+  model: opus
+  effort: high
+
+critical:                 # dinero, permisos, migraciones
+  provider: claude
+  model: opus
+  effort: max
+
+ui:
+  provider: claude
+  model: opus
+  effort: high
+
+review:
+  provider: codex
+  model: default
+  effort: high
