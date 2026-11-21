@@ -4,7 +4,7 @@ Every agent reads these rules. This project's configuration is in `harness.confi
 
 ## Flow
 
-1. **Plan** (`writing-plans`): idea and mocks → `plans/<slug>/plan.md` and a draft ticket.
+1. **Ticket** (`writing-ticket`): idea and mocks → a draft ticket, with a private plan in `plans/<slug>/plan.md`.
 2. **Ticket and check**: the ticket is created in GitHub and a reader with no context tests it.
 3. **Human approval**: mocks for every state, and the plan.
 4. **Build**: phase by phase, with tests. Each phase ends by running its `done-check`.

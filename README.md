@@ -6,7 +6,7 @@ It is not an application: it is a set of files that agents read. The rules live 
 
 ## Flow
 
-1. **Plan**: idea + mocks → plan (`writing-plans`)
+1. **Ticket**: idea + mocks → draft ticket and a private plan (`writing-ticket`)
 2. **Ticket and check**: GitHub ticket, tested by a reader with no context
 3. **Human approval**: mocks and plan
 4. **Build**: phase by phase, code and tests, with an ephemeral DB per ticket
@@ -63,6 +63,6 @@ scripts/install.sh        connects the harness to a project
 
 ## Status
 
-Done: common rules, config, `model-mapping`, the `writing-plans` and `independent-review` skills, the `planner` and `reviewer` roles, templates and `install.sh`.
+Done: common rules, config, `model-mapping`, the `writing-ticket` and `independent-review` skills, the `ticket-writer` and `reviewer` roles, templates and `install.sh`.
 
-Pending: `ticket-writer`, `ticket-check`, `executing-plans`, `implement-feature`, `documenting`, `pr-review`, `e2e-runner`, `reporting-results`, security and performance roles, the `db-*.sh`, `gh-*.sh`, `worktree.sh` and `check-ready.sh` scripts.
+Pending: `ticket-check`, `executing-plans`, `implement-feature`, `documenting`, `pr-review`, `e2e-runner`, `reporting-results`, security and performance roles, the `db-*.sh`, `gh-*.sh`, `worktree.sh` and `check-ready.sh` scripts.

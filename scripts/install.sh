@@ -183,6 +183,27 @@ prune_stale_links() {
   done
 }
 
+# Copy mode: removes copies whose source no longer exists in the harness (renamed or deleted).
+prune_stale_copies() {
+  [ -f "$COPIES_FILE" ] || return 0
+  local rel src tmp
+  tmp="$(mktemp)"
+  while IFS= read -r rel; do
+    [ -n "$rel" ] || continue
+    case "$rel" in
+      .claude/skills/*|.agents/skills/*) src="$HARNESS/skills/${rel##*/}" ;;
+      .claude/agents/*) src="$HARNESS/roles/${rel##*/}" ;;
+      *) src="" ;;
+    esac
+    if [ -n "$src" ] && [ ! -e "$src" ]; then
+      rm -rf "${PROJECT:?}/$rel"; say "removed" "$rel (no longer in the harness)"
+    else
+      printf '%s\n' "$rel" >> "$tmp"
+    fi
+  done < "$COPIES_FILE"
+  mv "$tmp" "$COPIES_FILE"
+}
+
 echo "Project: $PROJECT   (mode: $MODE)"
 echo "Harness: $HARNESS ($(harness_commit))"
 
@@ -210,6 +231,7 @@ else
     copy_item "$HARNESS/skills/$name" ".agents/skills/$name"
   done
   for f in $(role_files); do copy_item "$HARNESS/roles/$f" ".claude/agents/$f"; done
+  if [ "$ACTION" = "update" ]; then prune_stale_copies; fi
 fi
 
 mkdir -p "$PROJECT/.harness"
