@@ -1,23 +1,23 @@
-# idea2prod: reglas para desarrollar este repo
+# idea2prod: rules for developing this repo
 
-Este repo es el harness: archivos que otros agentes leen en otros proyectos. Aquí no hay aplicación que compilar.
+This repo is the harness: files that other agents read in other projects. There is no application to build here.
 
-## Estructura
+## Structure
 
-- `templates/`: se copia a cada proyecto. `AGENTS.project.md` y `CLAUDE.project.md` son las reglas que ese proyecto hereda.
-- `skills/<nombre>/SKILL.md`: una skill por fase. Frontmatter con `name` y `description` (cuándo usarla).
-- `roles/<rol>.md`: prompt de rol con frontmatter de subagente de Claude.
-- `scripts/`: bash portable, `set -euo pipefail`, idempotente.
+- `templates/`: copied into each project. `AGENTS.project.md` and `CLAUDE.project.md` are the rules that project inherits.
+- `skills/<name>/SKILL.md`: one skill per phase. Frontmatter with `name` and `description` (when to use it).
+- `roles/<role>.md`: role prompt with Claude subagent frontmatter.
+- `scripts/`: portable bash, `set -euo pipefail`, idempotent.
 
-## Convenciones
+## Conventions
 
-- Las skills son cortas: pasos numerados, entradas, salidas y qué NO hacer. Si pasa de ~100 líneas, se parte.
-- Una skill nunca depende del chat: lee y escribe archivos (`plans/<slug>/plan.md`, `status.md`, `reviews/`).
-- Nada específico de un proyecto en este repo. Lo que cambia por proyecto va en `harness.config.yml`.
-- Los nombres de modelos y proveedores solo viven en `model-mapping.yml`.
-- Todo lo que se escribe para un humano va en español; los nombres de archivos, comandos y claves, en inglés.
+- Skills are short: numbered steps, inputs, outputs, and what NOT to do. If one grows past ~100 lines, split it.
+- A skill never depends on the chat: it reads and writes files (`plans/<slug>/plan.md`, `status.md`, `reviews/`).
+- Nothing project-specific lives in this repo. What changes per project goes in `harness.config.yml`.
+- Model and provider names live only in `model-mapping.yml`.
+- Everything is written in English: docs, skills, roles, templates, script messages, file names, commands and keys.
 
-## Verificar un cambio
+## Verifying a change
 
-- `scripts/install.sh` se prueba en un proyecto temporal con `HOME` apuntando a un directorio temporal vacío. Debe ser idempotente (correrlo dos veces no cambia nada), no escribir nada en `HOME` y respetar skills del proyecto con el mismo nombre.
-- Después de editar una skill, revisar que el frontmatter sea válido y que las rutas que menciona existan en `templates/`.
+- Test `scripts/install.sh` in a temporary project with `HOME` pointing to an empty temporary directory. It must be idempotent (running it twice changes nothing), write nothing into `HOME`, and respect project skills that have the same name.
+- After editing a skill, check that its frontmatter is valid and that the paths it mentions exist in `templates/`.

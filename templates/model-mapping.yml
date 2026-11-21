@@ -1,6 +1,6 @@
-# Qué modelo hace cada tipo de fase. Valores de ejemplo: cámbialos a gusto.
-# Cada fase del plan lleva una etiqueta; el agente que la ejecuta usa esta fila.
-# Regla fija: la fila `review` debe ser de otra familia que quien construyó.
+# Which model handles each kind of phase. Example values: change them as you like.
+# Every phase in the plan carries a label; the agent that runs it uses that row.
+# Fixed rule: the `review` row must be from a different family than whoever built.
 
 mechanical:
   provider: claude
@@ -12,7 +12,7 @@ judgment:
   model: opus
   effort: high
 
-critical:                 # dinero, permisos, migraciones
+critical:                 # money, permissions, migrations
   provider: claude
   model: opus
   effort: max

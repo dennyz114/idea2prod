@@ -1,19 +1,19 @@
 # Review <n> — <slug>
 
-**Revisor:** <proveedor/modelo>   **Base:** <commit>   **Veredicto:** approve | changes-requested
+**Reviewer:** <provider/model>   **Base:** <commit>   **Verdict:** approve | changes-requested
 
-## Hallazgos
+## Findings
 
-### 1. <título corto>  — severidad: critical | high | medium | low
-- **Dónde:** `ruta/archivo:línea`
-- **Qué falla:** <escenario concreto: entrada o estado → resultado incorrecto>
-- **Confianza:** high | medium | low
-- **Sugerencia:** <opcional, una línea>
+### 1. <short title>  — severity: critical | high | medium | low
+- **Where:** `path/file:line`
+- **What fails:** <concrete scenario: input or state → wrong result>
+- **Confidence:** high | medium | low
+- **Suggestion:** <optional, one line>
 
-## Verificado sin hallazgos
+## Verified, no findings
 
-- <qué se revisó y estaba bien: criterios de aceptación, riesgos del plan, comandos ejecutados>
+- <what was checked and was fine: acceptance criteria, plan risks, commands run>
 
-## No revisado
+## Not reviewed
 
-- <lo que quedó fuera y por qué>
+- <what was left out and why>

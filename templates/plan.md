@@ -1,38 +1,38 @@
-# <Título de la feature>
+# <Feature title>
 
-**Ticket:** <owner/repo#número, o "pendiente">
-**Tamaño:** small | medium | large
-**Ejecución:** direct | orchestrate   <!-- direct: la hace un solo agente; orchestrate: una fase por helper -->
-**Base:** <rama o commit sobre el que se escribió este plan>
+**Ticket:** <owner/repo#number, or "pending">
+**Size:** small | medium | large
+**Execution:** direct | orchestrate   <!-- direct: a single agent does it; orchestrate: one helper per phase -->
+**Base:** <branch or commit this plan was written against>
 
-## Contexto
+## Context
 
-Qué problema resuelve y por qué ahora, en 2 o 3 líneas. Qué código y qué ADRs toca.
+The problem this solves and why now, in 2 or 3 lines. Which code and which ADRs it touches.
 
-## Decisiones
+## Decisions
 
-- <decisión> — descartado: <alternativa y por qué>
+- <decision> — rejected: <alternative and why>
 
-## Fases
+## Phases
 
-### A1. <nombre>  (mechanical | judgment | critical | ui)
-- **Hace:** <qué cambia>
-- **Estados** (solo ui): carga, vacío, error, éxito
-- **done-check:** `<comando que debe pasar>` → <resultado esperado>
+### A1. <name>  (mechanical | judgment | critical | ui)
+- **Does:** <what changes>
+- **States** (ui only): loading, empty, error, success
+- **done-check:** `<command that must pass>` → <expected result>
 
-### B1. <nombre>  (...)
+### B1. <name>  (...)
 - ...
 
-## Riesgos de seguridad y performance
+## Security and performance risks
 
-- **Seguridad:** <permisos, input de usuario, datos sensibles, dependencias nuevas; o "ninguno">
-- **Performance:** <consultas, listas grandes, bundle; o "ninguno">
-- **Datos de prueba:** <qué seed necesita, o "base">
+- **Security:** <permissions, user input, sensitive data, new dependencies; or "none">
+- **Performance:** <queries, large lists, bundle; or "none">
+- **Test data:** <which seed it needs, or "base">
 
-## Fuera de alcance
+## Out of scope
 
-- <lo que se decidió no hacer, y cuándo valdría la pena>
+- <what was decided not to do, and when it would be worth doing>
 
-## Preguntas abiertas
+## Open questions
 
-- <ninguna, o lo que falta decidir>
+- <none, or what is still undecided>

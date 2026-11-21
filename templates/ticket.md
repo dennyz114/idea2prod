@@ -1,38 +1,38 @@
 ---
 name: Feature
-about: Cambio con plan, criterios y alcance claros
+about: A change with a clear plan, criteria and scope
 title: ""
 labels: ""
 ---
 
-## Resumen
+## Summary
 
-<!-- Qué puede hacer la persona después de este cambio. -->
+<!-- What a person can do after this change. -->
 
-## Por qué
+## Why
 
-<!-- El problema de hoy. -->
+<!-- Today's problem. -->
 
-## Decisiones
+## Decisions
 
-<!-- Lo decidido y lo descartado, con la razón. -->
+<!-- What was decided and what was rejected, with the reason. -->
 
-## Alcance
+## Scope
 
-<!-- Qué entra. -->
+<!-- What is included. -->
 
-## Fuera de alcance
+## Out of scope
 
-<!-- Qué no entra. -->
+<!-- What is not included. -->
 
-## Pasos
+## Steps
 
-- [ ] <paso verificable>
+- [ ] <verifiable step>
 
-## Criterios de aceptación
+## Acceptance criteria
 
-- <comportamiento observable, con datos concretos>
+- <observable behavior, with concrete data>
 
-## Preguntas abiertas
+## Open questions
 
-<!-- "Ninguna" si no hay. -->
+<!-- "None" if there are none. -->

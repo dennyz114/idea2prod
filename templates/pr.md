@@ -1,19 +1,19 @@
-## Qué cambia
+## What changes
 
-<!-- 2 o 3 líneas, para quien no vio el ticket. -->
+<!-- 2 or 3 lines, for someone who did not see the ticket. -->
 
 Closes #
 
-## Cómo se verificó
+## How it was verified
 
 - [ ] `lint`
 - [ ] `test`
-- [ ] `e2e` (flujo: ...)
+- [ ] `e2e` (flow: ...)
 
-## Review independiente
+## Independent review
 
-<!-- Hallazgos totales, aplicados y descartados (con la razón de cada descarte). -->
+<!-- Total findings, applied and dropped (with the reason for each one dropped). -->
 
-## Riesgos
+## Risks
 
-<!-- Seguridad, performance, migraciones, rollback. "Ninguno" si no hay. -->
+<!-- Security, performance, migrations, rollback. "None" if there are none. -->

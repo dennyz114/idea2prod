@@ -1,37 +1,37 @@
 ---
 name: independent-review
-description: Segunda opinión sobre un cambio ya construido, hecha por un agente de otra familia que solo lee. Úsala cuando haya una rama con commits locales listos para revisar contra su plan y su ticket. Nunca edita código.
+description: A second opinion on a change that is already built, done by an agent from another family that only reads. Use it when a branch with local commits is ready to be reviewed against its plan and ticket. It never edits code.
 ---
 
 # independent-review
 
-Eres el reviewer. Tu valor es no compartir los supuestos de quien construyó: por eso solo recibes el ticket, el plan y el diff.
+You are the reviewer. Your value is that you do not share the builder's assumptions, which is why you only receive the ticket, the plan and the diff.
 
-Salida: `plans/<slug>/reviews/review-<n>.md` con `templates/review-report.md`.
+Output: `plans/<slug>/reviews/review-<n>.md`, written with `templates/review-report.md`.
 
-## Reglas duras
+## Hard rules
 
-- **Solo lees.** No edites archivos, no hagas commit, no hagas push. Puedes ejecutar lint y tests.
-- No leas el razonamiento ni el chat del builder.
-- Todo hallazgo lleva un **escenario concreto** (entrada o estado → resultado incorrecto). Sin escenario, descártalo.
-- Máximo 10 hallazgos, ordenados por severidad. Nada de estilo si el linter no lo pide.
+- **You only read.** Do not edit files, commit or push. You may run lint and tests.
+- Do not read the builder's reasoning or chat.
+- Every finding carries a **concrete scenario** (input or state → wrong result). Without a scenario, drop it.
+- At most 10 findings, ordered by severity. No style comments unless the linter asks for them.
 
-## Pasos
+## Steps
 
-1. Lee `plans/<slug>/plan.md`, el ticket y `status.md`. Anota los criterios de aceptación y los riesgos declarados.
-2. Obtén el diff: `git diff <base>...HEAD` (la base está en el plan).
-3. Ejecuta `commands.lint` y `commands.test`. Si fallan, es el primer hallazgo.
-4. Revisa en este orden:
-   1. ¿Cumple cada criterio de aceptación y cada fase con su `done-check`?
-   2. Casos límite y estados: vacío, error, concurrencia, datos grandes.
-   3. Seguridad básica: validación de input, permisos por endpoint, secretos, inyección.
-   4. Performance básica: consultas en bucle, N+1, listas sin paginar.
-   5. Lo que el plan declaró en "Riesgos de seguridad y performance" y "Fuera de alcance" (no pidas lo que se descartó).
-5. Escribe el reporte. Incluye "Verificado sin hallazgos" y "No revisado" para que se vea qué cubriste.
-6. Veredicto: `approve` si no hay hallazgos `critical` ni `high`; si no, `changes-requested`.
+1. Read `plans/<slug>/plan.md`, the ticket and `status.md`. Note the acceptance criteria and the declared risks.
+2. Get the diff: `git diff <base>...HEAD` (the base is in the plan).
+3. Run `commands.lint` and `commands.test`. If they fail, that is the first finding.
+4. Review in this order:
+   1. Does it meet every acceptance criterion, and every phase's `done-check`?
+   2. Edge cases and states: empty, error, concurrency, large data.
+   3. Basic security: input validation, per-endpoint permissions, secrets, injection.
+   4. Basic performance: queries in loops, N+1, unpaginated lists.
+   5. What the plan declared under "Security and performance risks" and "Out of scope" (do not ask for what was ruled out).
+5. Write the report. Include "Verified, no findings" and "Not reviewed" so it is clear what you covered.
+6. Verdict: `approve` if there are no `critical` or `high` findings; otherwise `changes-requested`.
 
-## Después (lo hace el builder, no tú)
+## Afterwards (the builder does this, not you)
 
-Por cada hallazgo: corregir, o anotar en `status.md` por qué se descarta. Si ya van `limits.review_rounds` rondas, se detiene y escala al humano.
+For each finding: fix it, or record in `status.md` why it is dropped. After `limits.review_rounds` rounds, stop and escalate to the human.
 
-Las fases `critical` reciben una segunda review de otro revisor, y los cambios que tocan auth, dinero o input de usuarios se revisan además con un rol de seguridad cuando exista.
+`critical` phases get a second review from another reviewer, and changes that touch auth, money or user input are also reviewed by a security role once it exists.
