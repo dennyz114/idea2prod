@@ -20,13 +20,13 @@ No es una aplicación: son archivos que los agentes leen. Las reglas viven en `A
 ```bash
 git clone https://github.com/dennyz114/idea2prod ~/idea2prod
 cd /ruta/a/tu/proyecto
-~/idea2prod/scripts/install.sh            # skills enlazadas al usuario (recomendado)
-~/idea2prod/scripts/install.sh --skills=project   # copia las skills dentro del proyecto
+~/idea2prod/scripts/install.sh            # instala
+~/idea2prod/scripts/install.sh --update   # refresca skills y roles del harness
 ```
 
-`install.sh` es idempotente y no pisa archivos que ya existen. Ver `scripts/install.sh --help`.
+Todo queda **dentro del proyecto**: el script no escribe nada en `~/.claude`, `~/.agents` ni en otro lugar del usuario, así que no interfiere con las skills de nadie. Después de instalar, haz commit de lo creado: así cada clon y cada git worktree (T3 Code usa uno por thread) ya trae las skills.
 
-**Por qué las skills van al usuario por defecto:** T3 Code trabaja con git worktrees y un worktree solo contiene archivos versionados. Enlazar las skills en `~/.claude` y `~/.agents` hace que existan en todos los worktrees sin ensuciar el repo. Con `--skills=project` se copian al proyecto y se versionan, útil si el equipo debe compartirlas.
+`install.sh` es idempotente y no pisa archivos existentes. Anota lo que instaló en `.harness/managed.txt`; `--update` solo toca eso, y una skill propia del proyecto con el mismo nombre se respeta. Ver `scripts/install.sh --help`.
 
 ## Estructura
 

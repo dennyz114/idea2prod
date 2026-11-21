@@ -19,5 +19,5 @@ Este repo es el harness: archivos que otros agentes leen en otros proyectos. Aqu
 
 ## Verificar un cambio
 
-- `scripts/install.sh` se prueba en un proyecto temporal con `HOME` apuntando a un directorio temporal. Debe ser idempotente: correrlo dos veces no cambia nada.
+- `scripts/install.sh` se prueba en un proyecto temporal con `HOME` apuntando a un directorio temporal vacío. Debe ser idempotente (correrlo dos veces no cambia nada), no escribir nada en `HOME` y respetar skills del proyecto con el mismo nombre.
 - Después de editar una skill, revisar que el frontmatter sea válido y que las rutas que menciona existan en `templates/`.
