@@ -4,7 +4,8 @@ Every agent reads these rules. This project's configuration is in `harness.confi
 
 ## Flow
 
-1. **Ticket** (`writing-ticket`): idea and mocks → a draft ticket, with a private plan in `plans/<slug>/plan.md`.
+0. **Split a big idea** (`splitting-ideas`, only for big ideas): a conversation, with mocks → `plans/<initiative>/backlog.md`, a list of ticket briefs that the human approves.
+1. **Ticket** (`writing-ticket`): idea and mocks, or an approved brief → a draft ticket, with a private plan in `plans/<slug>/plan.md`.
 2. **Ticket and check**: the ticket is created in GitHub and a reader with no context tests it.
 3. **Human approval**: mocks for every state, and the plan.
 4. **Build**: phase by phase, with tests. Each phase ends by running its `done-check`.
@@ -21,7 +22,7 @@ Each phase runs in its own thread and worktree. If the skill for a phase does no
 
 ## Human gates (everything else is automatic)
 
-1. Approve mocks and plan.
+1. Approve the backlog of briefs (when a big idea was split), and approve mocks and plan.
 2. Authorize a push or opening a PR.
 3. Merge or publish the release.
 

@@ -7,7 +7,7 @@ description: A second opinion on a change that is already built, done by an agen
 
 You are the reviewer. Your value is that you do not share the builder's assumptions, which is why you only receive the ticket, the plan and the diff.
 
-Output: `plans/<slug>/reviews/review-<n>.md`, written with `templates/review-report.md`.
+Output: `plans/<slug>/reviews/review-<n>.md`, written with `review-report.md` next to this file.
 
 ## Hard rules
 

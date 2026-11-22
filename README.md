@@ -6,7 +6,8 @@ It is not an application: it is a set of files that agents read. The rules live 
 
 ## Flow
 
-1. **Ticket**: idea + mocks → draft ticket and a private plan (`writing-ticket`)
+0. **Split** (only for a big idea): a conversation with the agent, with mocks → a backlog of ticket briefs that you approve (`splitting-ideas`). Each approved brief then goes through steps 1 to 8.
+1. **Ticket**: idea + mocks, or an approved brief → draft ticket and a private plan (`writing-ticket`)
 2. **Ticket and check**: GitHub ticket, tested by a reader with no context
 3. **Human approval**: mocks and plan
 4. **Build**: phase by phase, code and tests, with an ephemeral DB per ticket
@@ -55,14 +56,14 @@ See `scripts/install.sh --help`.
 
 ```
 AGENTS.md / CLAUDE.md     rules for developing this repo
-templates/                what gets copied into each project (rules, config, plan, ticket, PR, review)
-skills/                   one skill per phase
+templates/                what gets copied into each project once (rules, config, model mapping, PR and ticket templates)
+skills/                   one skill per phase; each skill keeps its own templates next to its SKILL.md
 roles/                    role prompts (Claude subagents; in Codex you paste them when opening the thread)
 scripts/install.sh        connects the harness to a project
 ```
 
 ## Status
 
-Done: common rules, config, `model-mapping`, the `writing-ticket` and `independent-review` skills, the `ticket-writer` and `reviewer` roles, templates and `install.sh`.
+Done: common rules, config, `model-mapping`, the `splitting-ideas`, `writing-ticket` and `independent-review` skills, the `ticket-writer` and `reviewer` roles, templates and `install.sh`.
 
 Pending: `ticket-check`, `executing-plans`, `implement-feature`, `documenting`, `pr-review`, `e2e-runner`, `reporting-results`, security and performance roles, the `db-*.sh`, `gh-*.sh`, `worktree.sh` and `check-ready.sh` scripts.
